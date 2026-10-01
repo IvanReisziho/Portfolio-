@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ivan Reis — Design & Direção de Arte</title>
+<meta name="description" content="Portfólio de Ivan Reis, designer e diretor de arte — identidade visual, motion e comunicação institucional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="https://cdn.spline.design/@splinetool/viewer@2.0.59/build/spline-viewer.js"></script>
+
+
+<style id="ivan-layout-adjustments">
+/* Ajustes solicitados */
+.hero-content {
+  transform: translateX(5vw);
+}
+.cta-band .wrap {
+  text-align: center;
+}
+.cta-band .wrap > h2 {
+  display: none;
+}
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+footer {
+  padding-bottom: 34px;
+}
+.social-links {
+  gap: 18px;
+}
+@media (max-width: 900px) {
+  .hero-content {
+    transform: translateX(2vw);
+  }
+}
+@media (max-width: 600px) {
+  .hero-content {
+    transform: none;
+  }
+  footer {
+      padding-bottom: 10px;
+    }
+  .social-links {
+    gap: 16px;
+  }
+}
+</style>
+
+
+<style>
+  /* Ajustes solicitados */
+  .cta-band {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .cta-band .wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cta-actions {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cta-btn {
+    margin: 0;
+  }
+
+  /* Respiro entre os ícones e a linha final do rodapé */
+  footer {
+    padding-bottom: 10px;
+  }
+
+  .social-links {
+    gap: 18px;
+    margin-bottom: 10px;
+  }
+</style>
+
+
+<style id="hero-model-2">
+/* ================= HERO — MODELO 2 ================= */
+.hero-model-2 .hero-content {
+  transform: translateX(-2vw);
+}
+
+.hero-model-2 .hero-grid {
+  align-items: center;
+}
+
+.hero-copy-compact {
+  max-width: 560px;
+  position: relative;
+  z-index: 3;
+}
+
+.hero-model-2 .hero-eyebrow {
+  margin-bottom: 22px;
+  letter-spacing: .24em;
+  font-size: 11px;
+}
+
+.hero-name {
+  margin: 0 0 22px;
+  font-family: "Fraunces", serif;
+  font-size: clamp(58px, 6vw, 88px);
+  line-height: .92;
+  font-weight: 500;
+  letter-spacing: -.045em;
+}
+
+.hero-name em {
+  color: #1647ff;
+  font-style: italic;
+}
+
+.hero-lead {
+  max-width: 500px;
+  margin: 0 0 18px;
+  font-size: clamp(20px, 1.8vw, 27px);
+  line-height: 1.22;
+  letter-spacing: -.02em;
+}
+
+.hero-copy-compact .hero-desc {
+  max-width: 500px;
+  margin: 0 0 28px;
+  line-height: 1.55;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 2px;
+}
+
+.hero-cta span {
+  font-size: 18px;
+  line-height: 1;
+  transition: transform .25s ease;
+}
+
+.hero-cta:hover span {
+  transform: translateX(4px);
+}
+
+.hero-side-compact {
+  align-self: center;
+  margin-top: 170px;
+}
+
+.hero-side-compact dl {
+  max-width: 310px;
+}
+
+@media (max-width: 900px) {
+  .hero-model-2 .hero-content {
+    transform: translateX(0);
+  }
+
+  .hero-model-2 .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy-compact {
+    max-width: 600px;
+  }
+
+  .hero-side-compact {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-name {
+    font-size: 58px;
+  }
+
+  .hero-lead {
+    font-size: 21px;
+  }
+
+  .hero-model-2 .hero-eyebrow {
+    font-size: 9px;
+    letter-spacing: .18em;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-mark">Ivan Reis</div>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#about">Sobre mim</a>
+      <a href="#work">Projetos</a>
+      <a href="videos.html">Vídeos</a>
+      <a href="sites.html">Sites</a>
+      <a href="#contact">Contato</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navDropdown" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="nav-dropdown" id="navDropdown" aria-label="Navegação móvel">
+    <a href="#about">Sobre mim</a>
+    <a href="#work">Projetos</a>
+    <a href="videos.html">Vídeos</a>
+    <a href="sites.html">Sites</a>
+    <a href="#contact">Contato</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ================= HERO — MODELO 2 ================= -->
+  <section id="hero" class="hero-model-2">
+    <div class="hero-media" aria-hidden="true">
+      <spline-viewer url="https://prod.spline.design/dFhVkfyk1cYRoHW6/scene.splinecode"></spline-viewer>
+      <div class="spline-badge-mask"></div>
+    </div>
+
+    <div class="wrap hero-content">
+      <div class="hero-grid">
+        <div class="hero-copy-compact">
+          <p class="hero-eyebrow">DESIGNER PLENO · DIREÇÃO DE ARTE</p>
+
+          <h1 class="hero-name">Ivan <em>Reis</em></h1>
+
+          <p class="hero-lead">
+            Design, direção de arte e comunicação visual para transformar ideias em soluções claras e relevantes.
+          </p>
+
+          <p class="hero-desc">
+            Mais de 7 anos de experiência em órgãos públicos, agências, produtoras,
+            canais de educação e marketplaces, com atuação em identidade visual,
+            campanhas, motion e comunicação institucional.
+          </p>
+
+          <a class="cta-btn hero-cta" href="https://wa.me/5561996705040" target="_blank" rel="noopener">
+            Fale comigo <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="hero-side hero-side-compact">
+          <dl>
+            <dt> </dt>
+            <dd> </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- ================= SOBRE MIM ================= -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-photo" data-reveal>
+        <img src="Foto de Ivan Reis.png" alt="Foto de Ivan Reis">
+      </div>
+      <div class="about-text" data-reveal>
+        <p>Sou Ivan, Designer Pleno com mais de 7 anos de experiência, com atuação em órgãos públicos, agências, produtoras, canais de educação e marketplaces. Ao longo da minha trajetória, desenvolvi soluções visuais para diferentes contextos e públicos, sempre buscando equilibrar clareza, consistência e resultado.</p>
+        <p>Tenho domínio do Pacote Adobe e experiência em vídeo e motion design, especialmente com After Effects e Premiere. Gosto de transformar demandas complexas em soluções visuais claras, trabalhar em diferentes formatos e colaborar com equipes para tirar boas ideias do papel.</p>
+
+        <div class="about-exp">
+          <div class="about-exp-row">
+            <div class="about-exp-role">Ministério Público<span>Diretor de Arte Sênior — atual</span></div>
+            <p class="about-exp-desc">Comunicação visual institucional, materiais para eventos das câmaras temáticas do CNMP, editoração e diagramação de publicações.</p>
+          </div>
+          <div class="about-exp-row">
+            <div class="about-exp-role">Grupo Exemplus<span>Diretor de Arte Sênior</span></div>
+            <p class="about-exp-desc">Consolidação da identidade visual da empresa, criação do selo de 30 anos e branding book completo.</p>
+          </div>
+          <div class="about-exp-row">
+            <div class="about-exp-role">Instituto Cerrados<span>Diretor de Arte Sênior</span></div>
+            <p class="about-exp-desc">Redesign do site institucional, peças para redes sociais e diagramação do Código de Ética.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA 2 ================= -->
+  <section class="cta-band" id="cta-2">
+    <div class="wrap" data-reveal>
+        <div class="cta-actions">
+        <a class="cta-btn" href="https://wa.me/5561996705040" target="_blank" rel="noopener">Fale comigo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORK ================= -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Projetos selecionados</h2>
+        <p>Uma seleção de trabalhos em identidade visual, direção de arte, comunicação e motion design.</p>
+      </div>
+
+      <div class="work-grid">
+
+        <div class="work-item" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-exemplus">
+          <div class="frame carousel" data-carousel>
+            <!-- TROQUE pelas imagens reais do selo/aplicações (adicione ou remova <img> à vontade) -->
+            <img class="is-active" src="GRUPO_EXEMPLUS_1.png" alt="Selo comemorativo dos 30 anos do Grupo Exemplus — imagem 1">
+            <img src="GRUPO_EXEMPLUS_2.png" alt="Selo comemorativo dos 30 anos do Grupo Exemplus — imagem 2">
+            <img src="GRUPO_EXEMPLUS_3.png" alt="Selo comemorativo dos 30 anos do Grupo Exemplus — imagem 3">
+            <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
+            <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
+            <div class="carousel-dots"></div>
+          </div>
+          <div class="work-meta">
+            <h3>Grupo Exemplus — selo de 30 anos</h3>
+            <span><!-- ANO --></span>
+          </div>
+          <div class="work-tags">
+            <span>Selo Comemorativo</span>
+            <span>Branding Book</span>
+            <span>Identidade Visual</span>
+          </div>
+          <p class="work-desc">Criação do selo comemorativo de 30 anos e consolidação da identidade visual da empresa, transformando um logotipo isolado em um sistema visual mais consistente e aplicável a diferentes pontos de contato.</p>
+          <a class="behance-btn" href="https://www.behance.net/gallery/233815559/Selo-3Oanos" target="_blank" rel="noopener">Ver no Behance ↗</a>
+        </div>
+
+        <div class="work-item" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-cnmp">
+          <div class="frame carousel" data-carousel>
+            <!-- TROQUE pelas imagens reais da identidade -->
+            <img class="is-active" src="OUVIDORIA_CNMP_1.png" alt="Identidade visual da Ouvidoria do CNMP — imagem 1">
+            <img src="OUVIDORIA_CNMP_2.png" alt="Identidade visual da Ouvidoria do CNMP — imagem 2">
+            <img src="OUVIDORIA_CNMP_3.png" alt="Identidade visual da Ouvidoria do CNMP — imagem 3">
+            <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
+            <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
+            <div class="carousel-dots"></div>
+          </div>
+          <div class="work-meta">
+            <h3>Ouvidoria do CNMP — identidade visual</h3>
+            <span><!-- ANO --></span>
+          </div>
+          <div class="work-tags">
+            <span>Branding</span>
+            <span>Identidade Visual</span>
+            <span>Comunicação Institucional</span>
+          </div>
+          <p class="work-desc">Desenvolvimento de identidade visual para comunicação institucional no Ministério Público, buscando unidade visual, reconhecimento e clareza em diferentes canais e formatos.</p>
+          <a class="behance-btn" href="https://www.behance.net/gallery/242273025/Selo-Ouvidoria" target="_blank" rel="noopener">Ver no Behance ↗</a>
+        </div>
+
+        <div class="work-item" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-transporte">
+          <div class="frame carousel" data-carousel>
+            <!-- TROQUE pelas imagens/stills reais do motion -->
+            <img class="is-active" src="SISTEMA_TRANSPORTE_1.png" alt="Edições e motion do sistema de transporte — imagem 1">
+            <img src="SISTEMA_TRANSPORTE_2.png" alt="Edições e motion do sistema de transporte — imagem 2">
+            <img src="SISTEMA_TRANSPORTE_3.png" alt="Edições e motion do sistema de transporte — imagem 3">
+            <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
+            <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
+            <div class="carousel-dots"></div>
+          </div>
+          <div class="work-meta">
+            <h3>Sistema de Transporte — edições e motion</h3>
+            <span><!-- ANO --></span>
+          </div>
+          <div class="work-tags">
+            <span>Motion Design</span>
+            <span>Edição de Vídeo</span>
+          </div>
+          <p class="work-desc"><!-- TROQUE por uma descrição real --> Edição e criação de peças de motion design para comunicação do sistema de transporte, combinando ritmo, informação e consistência visual.</p>
+          <!-- TROQUE o href pelo link real do case no Behance -->
+          <a class="behance-btn" href="#" target="_blank" rel="noopener">Ver no Behance ↗</a>
+        </div>
+
+        <div class="work-item" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-bsbdw">
+          <div class="frame carousel" data-carousel>
+            <!-- TROQUE pelas artes reais da Brasília Design Week -->
+            <img class="is-active" src="BRASILIA_DESIGNWEEK_1.png" alt="Artes da Brasília Design Week — imagem 1">
+            <img src="BRASILIA_DESIGNWEEK_2.png" alt="Artes da Brasília Design Week — imagem 2">
+            <img src="BRASILIA_DESIGNWEEK_3.png" alt="Artes da Brasília Design Week — imagem 3">
+            <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
+            <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
+            <div class="carousel-dots"></div>
+          </div>
+          <div class="work-meta">
+            <h3>Brasília Design Week — artes</h3>
+            <span><!-- ANO --></span>
+          </div>
+          <div class="work-tags">
+            <span>Direção de Arte</span>
+            <span>Identidade Visual</span>
+          </div>
+          <p class="work-desc"><!-- TROQUE por uma descrição real --> Criação de peças para a Brasília Design Week, explorando linguagem visual, composição e aplicações para diferentes formatos do evento.</p>
+          <!-- TROQUE o href pelo link real do case no Behance -->
+          <a class="behance-btn" href="#" target="_blank" rel="noopener">Ver no Behance ↗</a>
+        </div>
+
+        <div class="work-item" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-cinema">
+          <div class="frame carousel" data-carousel>
+            <!-- TROQUE pelos stills reais do motion do festival -->
+            <img class="is-active" src="FESTIVAL_CINEMA_1.png" alt="Motions do festival de cinema — imagem 1">
+            <img src="FESTIVAL_CINEMA_2.png" alt="Motions do festival de cinema — imagem 2">
+            <img src="FESTIVAL_CINEMA_3.png" alt="Motions do festival de cinema — imagem 3">
+            <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
+            <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
+            <div class="carousel-dots"></div>
+          </div>
+          <div class="work-meta">
+            <h3>Festival de Cinema — motions</h3>
+            <span><!-- ANO --></span>
+          </div>
+          <div class="work-tags">
+            <span>Motion Design</span>
+            <span>Vinhetas</span>
+          </div>
+          <p class="work-desc"><!-- TROQUE por uma descrição real --> Criação de vinhetas e peças de motion para a comunicação audiovisual do festival, trabalhando movimento, ritmo e identidade.</p>
+          <!-- TROQUE o href pelo link real do case no Behance -->
+          <a class="behance-btn" href="#" target="_blank" rel="noopener">Ver no Behance ↗</a>
+        </div>
+
+        <div class="work-item" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-veertien">
+          <div class="frame carousel" data-carousel>
+            <!-- TROQUE pelas imagens reais do projeto Veertien -->
+            <img class="is-active" src="Veertien — imagem 1.png" alt="Veertien — imagem 1">
+            <img src="Veertien — imagem 2.png" alt="Veertien — imagem 2">
+            <img src="Veertien — imagem 3.png" alt="Veertien — imagem 3">
+            <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
+            <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
+            <div class="carousel-dots"></div>
+          </div>
+          <div class="work-meta">
+            <h3><!-- TROQUE pelo título/tipo do projeto -->Veertien</h3>
+            <span><!-- ANO --></span>
+          </div>
+          <div class="work-tags">
+            <!-- TROQUE pelas tags reais deste projeto -->
+            <span>Branding</span>
+            <span>Identidade Visual</span>
+          </div>
+          <p class="work-desc"><!-- TROQUE por uma descrição real do projeto Veertien --> Descrição do projeto Veertien — o que foi feito e qual o contexto.</p>
+          <!-- TROQUE o href pelo link real do case no Behance -->
+          <a class="behance-btn" href="#" target="_blank" rel="noopener">Ver no Behance ↗</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA 3 ================= -->
+  <section class="cta-band" id="cta-3">
+    <div class="wrap" data-reveal>
+        <div class="cta-actions">
+        <a class="cta-btn" href="https://wa.me/5561996705040" target="_blank" rel="noopener">Fale comigo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MODAIS DE PROJETO ================= -->
+  <!-- Cada modal abre ao clicar no card correspondente acima. Edite título, ano, tags e descrição livremente. -->
+
+  <div class="project-modal" id="modal-exemplus" role="dialog" aria-modal="true" aria-labelledby="modal-exemplus-title">
+    <div class="project-modal-inner">
+      <button class="modal-close" aria-label="Fechar">×</button>
+      <div class="frame carousel modal-carousel" data-carousel>
+        <img class="is-active" src="GRUPO_EXEMPLUS_1.png" alt="Selo comemorativo dos 30 anos do Grupo Exemplus — imagem 1">
+        <img src="GRUPO_EXEMPLUS_2.png" alt="Selo comemorativo dos 30 anos do Grupo Exemplus — imagem 2">
+        <img src="GRUPO_EXEMPLUS_3.png" alt="Selo comemorativo dos 30 anos do Grupo Exemplus — imagem 3">
+        <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
+        <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
+        <div class="carousel-dots"></div>
+      </div>
+      <div class="modal-body">
+        <h3 id="modal-exemplus-title">Grupo Exemplus — selo de 30 anos</h3>
+        <p class="modal-year"><!-- ANO --></p>
+        <div class="work-tags">
+          <span>Selo Comemorativo</span>
+          <span>Branding Book</span>
+          <span>Identidade Visual</span>
+        </div>
+        <p class="modal-desc">Contribuí para a consolidação da identidade visual da empresa, transformando um logotipo isolado em uma identidade completa e consistente, com um branding book que orienta toda a comunicação online e offline. Criei o selo comemorativo de 30 anos, aplicado em diversos canais como assinatura de e-mail, materiais impressos, redes sociais e capas de plataformas digitais, fortalecendo a presença da marca.</p>
+        <a class="behance-btn" href="https://www.behance.net/gallery/233815559/Selo-3Oanos" target="_blank" rel="noopener">Ver trabalho completo no Behance ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-modal" id="modal-cnmp" role="dialog" aria-modal="true" aria-labelledby="modal-cnmp-title">
+    <div class="project-modal-inner">
+      <button class="modal-close" aria-label="Fechar">×</button>
+      <div class="frame carousel modal-carousel" data-carousel>
+        <img class="is-active" src="OUVIDORIA_CNMP_1.png" alt="Identidade visual da Ouvidoria do CNMP — imagem 1">
+        <img src="OUVIDORIA_CNMP_3.png" alt="Identidade visual da Ouvidoria do CNMP — imagem 2">
+        <img src="OUVIDORIA_CNMP_2.png" alt="Identidade visual da Ouvidoria do CNMP — imagem 3">
+        <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
+        <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
+        <div class="carousel-dots"></div>
+      </div>
+      <div class="modal-body">
+        <h3 id="modal-cnmp-title">Ouvidoria do CNMP — identidade visual</h3>
+        <p class="modal-year"><!-- ANO --></p>
+        <div class="work-tags">
+          <span>Branding</span>
+          <span>Identidade Visual</span>
+          <span>Comunicação Institucional</span>
+        </div>
+        <p class="modal-desc">Desenvolvimento de identidade visual como parte do trabalho de comunicação institucional no Ministério Público, contribuindo para o fortalecimento da comunicação institucional por meio do design e garantindo unidade estética e clareza informativa em diferentes canais e formatos.</p>
+        <a class="behance-btn" href="https://www.behance.net/gallery/242273025/Selo-Ouvidoria" target="_blank" rel="noopener">Ver trabalho completo no Behance ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-modal" id="modal-transporte" role="dialog" aria-modal="true" aria-labelledby="modal-transporte-title">
+    <div class="project-modal-inner">
+      <button class="modal-close" aria-label="Fechar">×</button>
+      <div class="frame carousel modal-carousel" data-carousel>
+        <img class="is-active" src="SISTEMA_TRANSPORTE_1.png" alt="Edições e motion do sistema de transporte — imagem 1">
+        <img src="SISTEMA_TRANSPORTE_2.png" alt="Edições e motion do sistema de transporte — imagem 2">
+        <img src="SISTEMA_TRANSPORTE_3.png" alt="Edições e motion do sistema de transporte — imagem 3">
+        <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
+        <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
+        <div class="carousel-dots"></div>
+      </div>
+      <div class="modal-body">
+        <h3 id="modal-transporte-title">Sistema de Transporte — edições e motion</h3>
+        <p class="modal-year"><!-- ANO --></p>
+        <div class="work-tags">
+          <span>Motion Design</span>
+          <span>Edição de Vídeo</span>
+        </div>
+        <p class="modal-desc"><!-- TROQUE por uma descrição real, incluindo o nome do sistema/cidade --> Edição e peças de motion design para a comunicação visual do sistema de transporte, com foco em clareza informativa e consistência de identidade nos diferentes pontos de contato com o usuário.</p>
+        <a class="behance-btn" href="#" target="_blank" rel="noopener">Ver trabalho completo no Behance ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-modal" id="modal-bsbdw" role="dialog" aria-modal="true" aria-labelledby="modal-bsbdw-title">
+    <div class="project-modal-inner">
+      <button class="modal-close" aria-label="Fechar">×</button>
+      <div class="frame carousel modal-carousel" data-carousel>
+        <img class="is-active" src="BRASILIA_DESIGNWEEK_1.png" alt="Artes da Brasília Design Week — imagem 1">
+        <img src="BRASILIA_DESIGNWEEK_2.png" alt="Artes da Brasília Design Week — imagem 2">
+        <img src="BRASILIA_DESIGNWEEK_3.png" alt="Artes da Brasília Design Week — imagem 3">
+        <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
+        <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
+        <div class="carousel-dots"></div>
+      </div>
+      <div class="modal-body">
+        <h3 id="modal-bsbdw-title">Brasília Design Week — artes</h3>
+        <p class="modal-year"><!-- ANO --></p>
+        <div class="work-tags">
+          <span>Direção de Arte</span>
+          <span>Identidade Visual</span>
+        </div>
+        <p class="modal-desc"><!-- TROQUE por uma descrição real --> Criação de artes para a Brasília Design Week, aplicadas em peças digitais e impressas ao longo do evento, reforçando a identidade visual da edição.</p>
+        <a class="behance-btn" href="#" target="_blank" rel="noopener">Ver trabalho completo no Behance ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-modal" id="modal-cinema" role="dialog" aria-modal="true" aria-labelledby="modal-cinema-title">
+    <div class="project-modal-inner">
+      <button class="modal-close" aria-label="Fechar">×</button>
+      <div class="frame carousel modal-carousel" data-carousel>
+        <img class="is-active" src="FESTIVAL_CINEMA_1.png" alt="Motions do festival de cinema — imagem 1">
+        <img src="FESTIVAL_CINEMA_2.png" alt="Motions do festival de cinema — imagem 2">
+        <img src="FESTIVAL_CINEMA_3.png" alt="Motions do festival de cinema — imagem 3">
+        <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
+        <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
+        <div class="carousel-dots"></div>
+      </div>
+      <div class="modal-body">
+        <h3 id="modal-cinema-title">Festival de Cinema — motions</h3>
+        <p class="modal-year"><!-- ANO --></p>
+        <div class="work-tags">
+          <span>Motion Design</span>
+          <span>Vinhetas</span>
+        </div>
+        <p class="modal-desc"><!-- TROQUE por uma descrição real, incluindo o nome do festival --> Criação de vinhetas e peças de motion para a identidade audiovisual do festival de cinema.</p>
+        <a class="behance-btn" href="#" target="_blank" rel="noopener">Ver trabalho completo no Behance ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-modal" id="modal-veertien" role="dialog" aria-modal="true" aria-labelledby="modal-veertien-title">
+    <div class="project-modal-inner">
+      <button class="modal-close" aria-label="Fechar">×</button>
+      <div class="frame carousel modal-carousel" data-carousel>
+        <!-- TROQUE pelas imagens reais do projeto Veertien -->
+        <img class="is-active" src="Veertien — imagem 1.png" alt="Veertien — imagem 1">
+        <img src="Veertien — imagem 2.png" alt="Veertien — imagem 2">
+        <img src="Veertien — imagem 3.png" alt="Veertien — imagem 3">
+        <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
+        <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
+        <div class="carousel-dots"></div>
+      </div>
+      <div class="modal-body">
+        <h3 id="modal-veertien-title"><!-- TROQUE pelo título/tipo do projeto -->Veertien</h3>
+        <p class="modal-year"><!-- ANO --></p>
+        <div class="work-tags">
+          <!-- TROQUE pelas tags reais deste projeto -->
+          <span>Branding</span>
+          <span>Identidade Visual</span>
+        </div>
+        <p class="modal-desc"><!-- TROQUE por uma descrição real do projeto Veertien --> Descrição do projeto Veertien — o que foi feito e qual o contexto.</p>
+        <a class="behance-btn" href="#" target="_blank" rel="noopener">Ver trabalho completo no Behance ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="wrap contact-inner">
+      <div data-reveal>
+        <h2>Vamos criar algo juntos.</h2>
+        <a class="contact-email" href="mailto:reisivan2017@gmail.com">
+          reisivan2017@gmail.com
+        </a>
+      </div>
+      <div class="contact-links" data-reveal>
+        <a href="https://www.instagram.com/ivansilvareis/" target="_blank" rel="noopener">Instagram</a>
+        <a href="tel:+5561996705040">+55 61 99670-5040</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>© 2026 Ivan Reis</span>
+  <div class="social-links">
+    <!-- TROQUE pelo link do seu perfil no LinkedIn -->
+    <a href="https://www.linkedin.com/in/ivan-reis-76b529192/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/ivansilvareis/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-3.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
+    </a>
+    <!-- TROQUE pelo link do seu perfil no Behance -->
+    <a href="https://www.behance.net/artsreis" target="_blank" rel="noopener" aria-label="Behance">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><text x="12" y="16.5" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="12">Bē</text></svg>
+    </a>
+  </div>
+  <span>Feito com atenção aos detalhes</span>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/5561996705040" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2Zm5.8 14.11c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.02.24-3.4-.71-2.88-1.15-4.73-4.05-4.87-4.24-.14-.19-1.17-1.55-1.17-2.96 0-1.4.74-2.09 1-2.38.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.17.01.41-.07.64.48.24.58.81 2 .88 2.15.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.04.94 1.92 1.23 2.2 1.37.28.14.44.12.61-.07.16-.19.7-.81.88-1.09.19-.28.38-.23.63-.14.26.09 1.65.78 1.93.92.28.14.47.21.54.33.07.12.07.68-.17 1.36Z"/></svg>
+</a>
+
+<script src="script.js"></script>
+
+<!-- Deixa a roda do mouse rolar a página mesmo com o mouse sobre o crachá.
+     O arrastar e o clique no 3D continuam funcionando. -->
+<script>
+(function () {
+  var v = document.querySelector('.hero-media spline-viewer');
+  if (!v) return;
+  v.addEventListener('wheel', function (e) { e.stopPropagation(); }, { capture: true, passive: true });
+})();
+</script>
+
+</body>
+</html>
