@@ -26,6 +26,26 @@
     height: 100%;
     object-fit: cover;
   }
+
+  /* Grid dos 5 primeiros vídeos: todos na mesma fileira */
+  #videos .video-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+  }
+  #videos .video-card h3 { font-size: 1rem; }
+  #videos .video-card p  { font-size: 0.85rem; }
+
+  /* Telas menores: a fileira rola para o lado em vez de quebrar linha */
+  @media (max-width: 900px) {
+    #videos .video-grid {
+      grid-template-columns: repeat(5, 62vw);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+    }
+    #videos .video-card { scroll-snap-align: start; }
+  }
 </style>
 </head>
 <body>
@@ -58,7 +78,7 @@
   <!-- ================= INTRO DA PÁGINA ================= -->
   <section id="videos-intro">
     <div class="hero-media" aria-hidden="true">
-      <video autoplay muted loop playsinline src="></video>
+      <video autoplay muted loop playsinline src="Video_BG_1.mp4" poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=1600&q=80"></video>
     </div>
     <div class="wrap page-intro">
       <p class="hero-eyebrow">Vídeos & motion</p>
@@ -91,8 +111,8 @@
               <svg viewBox="0 0 24 24" fill="#E4D9C4"><path d="M8 5v14l11-7z"/></svg>
             </div>
           </div>
-          <h3>Norte — bastidores</h3>
-          <p>Documentário · 1:12</p>
+          <h3>Brasília Design Week</h3>
+          <p></p>
         </div>
 
         <div class="video-card" data-reveal>
@@ -113,8 +133,21 @@
               <svg viewBox="0 0 24 24" fill="#E4D9C4"><path d="M8 5v14l11-7z"/></svg>
             </div>
           </div>
-          <h3>Vento — walkthrough</h3>
-          <p>Produto · 0:48</p>
+          <h3>Brasília Design Week</h3>
+          <p>Produto</p>
+        </div>
+
+        <!-- NOVO: 5º vídeo -->
+        <div class="video-card" data-reveal>
+          <div class="frame">
+            <!-- TROQUE pelo vídeo real (mp4) -->
+            <video muted loop playsinline preload="metadata" src="Video_duplo_BDW.mp4"></video>
+            <div class="play-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="#E4D9C4"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <h3><!-- TROQUE pelo título real -->Título do vídeo 5</h3>
+          <p><!-- TROQUE pela categoria/duração -->Motion</p>
         </div>
 
       </div>
@@ -131,7 +164,7 @@
 
       <div class="single-card" data-reveal>
         <!-- TROQUE pelo vídeo real (mp4) -->
-        <video autoplay muted loop playsinline preload="metadata" src="Animaçao_selo_Exemplus.mp4"></video>
+        <video autoplay muted loop playsinline preload="metadata" src="Animaçao_selo_Exemplus.mp4"></video>
       </div>
     </div>
   </section>
@@ -162,7 +195,7 @@
 
         <!-- Vídeo C -->
         <div class="showcase-card showcase-c">
-          <video autoplay muted loop playsinline preload="metadata" src="Veertien_video_3..MOV" poster="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=900&q=80"></video>
+          <video autoplay muted loop playsinline preload="metadata" src="Veertien_video_3.mp4" poster="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=900&q=80"></video>
         </div>
 
       </div>
