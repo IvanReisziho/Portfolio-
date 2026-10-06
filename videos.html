@@ -9,6 +9,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* Seção: vídeo único com áudio ao passar o mouse */
+  #videos-single .single-card {
+    max-width: 960px;
+    margin: 0 auto;
+    border-radius: 16px;          /* bordas levemente arredondadas */
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  }
+  #videos-single .single-card video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
 </head>
 <body>
 
@@ -40,7 +58,7 @@
   <!-- ================= INTRO DA PÁGINA ================= -->
   <section id="videos-intro">
     <div class="hero-media" aria-hidden="true">
-      <video autoplay muted loop playsinline src="Video_BG_1.mp4" poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=1600&q=80"></video>
+      <video autoplay muted loop playsinline src="></video>
     </div>
     <div class="wrap page-intro">
       <p class="hero-eyebrow">Vídeos & motion</p>
@@ -99,6 +117,21 @@
           <p>Produto · 0:48</p>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ANIMAÇÃO DO SELO DE 30 ANOS (ÁUDIO NO HOVER) ================= -->
+  <section id="videos-single">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Animação do selo de 30 anos</h2>
+        <p>Passe o mouse sobre o vídeo para ativar o áudio.</p>
+      </div>
+
+      <div class="single-card" data-reveal>
+        <!-- TROQUE pelo vídeo real (mp4) -->
+        <video autoplay muted loop playsinline preload="metadata" src="Animaçao_selo_Exemplus.mp4"></video>
       </div>
     </div>
   </section>
@@ -248,7 +281,7 @@
     // o vídeo de fundo da intro é decorativo: fica sempre mudo
     if (video.closest('.hero-media')) return;
 
-    var host = video.closest('.video-card, .showcase-card, .feed-card') || video;
+    var host = video.closest('.video-card, .showcase-card, .feed-card, .single-card') || video;
     var toggle = host.querySelector('.mute-toggle');
 
     host.addEventListener('mouseenter', function () {
