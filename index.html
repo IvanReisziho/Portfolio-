@@ -9,7 +9,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<script type="module" src="https://cdn.spline.design/@splinetool/viewer@2.0.59/build/spline-viewer.js"></script>
+<script>
+// O visual 3D é carregado apenas em telas amplas, evitando travamentos no celular.
+if (window.matchMedia('(min-width: 861px)').matches && !navigator.connection?.saveData) {
+  const splineScript = document.createElement('script');
+  splineScript.type = 'module';
+  splineScript.src = 'https://cdn.spline.design/@splinetool/viewer@2.0.59/build/spline-viewer.js';
+  document.head.appendChild(splineScript);
+}
+</script>
 
 
 <style id="ivan-layout-adjustments">
@@ -232,6 +240,71 @@ footer {
 </style>
 
 
+<style id="mobile-performance-overrides">
+/* MOBILE 2026: espaçamento compacto e scroll responsivo */
+@media (max-width: 860px) {
+  html { scroll-behavior: auto; }
+  html, body { overflow-x: clip; }
+  body { -webkit-overflow-scrolling: touch; }
+  .wrap { padding-inline: 20px; }
+  section { padding-block: 48px; }
+  .site-nav .nav-inner { padding: 13px 20px; min-height: 58px; }
+  .nav-dropdown a { padding: 13px 20px; }
+  #hero.hero-model-2 { min-height: unset; padding: 78px 0 48px; align-items: flex-start; }
+  #hero .hero-content { transform: none; }
+  #hero .hero-media { opacity: .7; pointer-events: none; }
+  #hero .hero-media spline-viewer { display: none; }
+  #hero .hero-media::after {
+    background: radial-gradient(ellipse 85% 55% at 88% 30%, rgba(28,58,216,.17), transparent 75%),
+      linear-gradient(180deg, transparent 30%, #000 100%);
+  }
+  .hero-copy-compact { max-width: 100%; }
+  .hero-name { font-size: clamp(53px, 13vw, 78px); margin-bottom: 17px; }
+  .hero-lead { font-size: clamp(19px, 5vw, 23px); line-height: 1.3; margin-bottom: 13px; }
+  .hero-copy-compact .hero-desc { font-size: .94rem; line-height: 1.55; margin: 0 0 20px; }
+  .hero-model-2 .hero-eyebrow { margin-bottom: 15px; letter-spacing: .13em; }
+  .hero-cta { margin-top: 0; }
+  .cta-btn { min-height: 44px; padding: 10px 22px; }
+  section#about { padding-top: 42px; padding-bottom: 34px; }
+  .about-grid { gap: 21px; }
+  .about-photo { max-width: 138px; }
+  .about-text p { font-size: .94rem; line-height: 1.56; margin-bottom: 12px; }
+  .about-exp { margin-top: 20px; }
+  .about-exp-row { padding: 13px 0; gap: 5px; }
+  /* CTA imediatamente após a seção anterior, sem dois blocos de espaçamento */
+  .cta-band, #cta-2, #cta-3 { padding: 12px 0 32px; }
+  .cta-band .wrap { padding-inline: 20px; }
+  .cta-actions { margin: 0; }
+  #work { padding-top: 39px; padding-bottom: 36px; }
+  .section-head { display: block; margin-bottom: 22px; }
+  .section-head h2 { margin-bottom: 8px; }
+  .section-head p { max-width: 100%; font-size: .9rem; }
+  .work-grid { gap: 20px; }
+  .work-item .frame { aspect-ratio: 4/3; }
+  .work-meta { padding: 13px 15px 6px; }
+  .work-tags { padding: 0 15px 3px; gap: 6px; }
+  .work-desc { padding: 7px 15px 17px; font-size: .85rem; line-height: 1.52; }
+  #contact { padding-block: 48px; }
+  #contact h2 { margin-bottom: 14px; }
+  .contact-inner { gap: 19px; }
+  .contact-email { max-width: 100%; font-size: clamp(.9rem, 4vw, 1.1rem); overflow-wrap: anywhere; }
+  footer { padding: 24px 20px 20px; gap: 14px; }
+  .project-modal { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .project-modal-inner { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+  .project-modal .modal-body { padding: 60px 20px 22px; }
+  .project-modal .modal-gallery img { height: auto; }
+}
+@media (max-width: 460px) {
+  #hero.hero-model-2 { padding-top: 60px; padding-bottom: 35px; }
+  .hero-name { font-size: 56px; }
+  section#about { padding-top: 30px; }
+  .work-grid { gap: 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-modal, .project-modal-inner, [data-reveal] { transition: none !important; }
+}
+
+</style>
 </head>
 <body>
 
@@ -349,7 +422,7 @@ footer {
 
         <div class="work-item work-item--ouvidoria" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-ouvidoria">
           <div class="frame">
-            <img src="thumb_ouvidoria.png" alt="Selo Ouvidoria do CNMP" loading="lazy">
+            <img src="thumb_ouvidoria.webp" alt="Selo Ouvidoria do CNMP" loading="lazy">
           </div>
           <div class="work-meta">
             <h3>Selo Ouvidoria do CNMP</h3>
@@ -365,7 +438,7 @@ footer {
 
         <div class="work-item work-item--selo30" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-selo30">
           <div class="frame">
-            <img src="thumb_selo_30_anos.png" alt="Selo 30 anos — Grupo Exemplus" loading="lazy">
+            <img src="thumb_selo_30_anos.webp" alt="Selo 30 anos — Grupo Exemplus" loading="lazy">
           </div>
           <div class="work-meta">
             <h3>Selo 30 anos — Grupo Exemplus</h3>
@@ -381,7 +454,7 @@ footer {
 
         <div class="work-item work-item--logoseason" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-logoseason">
           <div class="frame">
-            <img src="thumb_logo_season_veertien.png" alt="Coleção Logo Season — Veertien" loading="lazy">
+            <img src="thumb_logo_season_veertien.webp" alt="Coleção Logo Season — Veertien" loading="lazy">
           </div>
           <div class="work-meta">
             <h3>Coleção Logo Season</h3>
@@ -396,7 +469,7 @@ footer {
 
         <div class="work-item work-item--miv" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-miv">
           <div class="frame">
-            <img src="thumb_miv_cotidiano.png" alt="MIV Cotidiano" loading="lazy">
+            <img src="thumb_miv_cotidiano.webp" alt="MIV Cotidiano" loading="lazy">
           </div>
           <div class="work-meta">
             <h3>MIV Cotidiano</h3>
@@ -433,7 +506,7 @@ footer {
         <p class="modal-desc">Identidade visual desenvolvida para a comunicação institucional da Ouvidoria do CNMP.</p>
       </div>
       <div class="modal-gallery">
-        <figure class="project-image"><img src="Ouvidoria.png" loading="lazy" alt="Selo Ouvidoria do CNMP — peça 1" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: Ouvidoria.png. Coloque o arquivo na pasta do site.</figcaption></figure>
+        <figure class="project-image"><img data-src="Ouvidoria.png" loading="lazy" alt="Selo Ouvidoria do CNMP — peça 1" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: Ouvidoria.png. Coloque o arquivo na pasta do site.</figcaption></figure>
       </div>
       <div class="modal-footer"><span>01 peça</span><span>Role para explorar o projeto ↓</span></div>
     </div>
@@ -448,13 +521,13 @@ footer {
         <p class="modal-desc">Criação do selo de 30 anos e aplicações da identidade comemorativa do Grupo Exemplus.</p>
       </div>
       <div class="modal-gallery">
-        <figure class="project-image"><img src="design_selo1.png" loading="lazy" alt="Selo 30 anos — Grupo Exemplus — peça 1" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: design_selo1.png. Coloque o arquivo na pasta do site.</figcaption></figure>
-        <figure class="project-image"><img src="design_selo2.png" loading="lazy" alt="Selo 30 anos — Grupo Exemplus — peça 2" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: design_selo2.png. Coloque o arquivo na pasta do site.</figcaption></figure>
-        <figure class="project-image"><img src="design_selo3.png" loading="lazy" alt="Selo 30 anos — Grupo Exemplus — peça 3" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: design_selo3.png. Coloque o arquivo na pasta do site.</figcaption></figure>
-        <figure class="project-image"><img src="design_selo4.png" loading="lazy" alt="Selo 30 anos — Grupo Exemplus — peça 4" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: design_selo4.png. Coloque o arquivo na pasta do site.</figcaption></figure>
-        <figure class="project-image"><img src="design_selo5.png" loading="lazy" alt="Selo 30 anos — Grupo Exemplus — peça 5" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: design_selo5.png. Coloque o arquivo na pasta do site.</figcaption></figure>
-        <figure class="project-image"><img src="design_selo6.png" loading="lazy" alt="Selo 30 anos — Grupo Exemplus — peça 6" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: design_selo6.png. Coloque o arquivo na pasta do site.</figcaption></figure>
-        <figure class="project-image"><img src="design_selo7.png" loading="lazy" alt="Selo 30 anos — Grupo Exemplus — peça 7" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: design_selo7.png. Coloque o arquivo na pasta do site.</figcaption></figure>
+        <figure class="project-image"><img data-src="design_selo1.png" loading="lazy" alt="Selo 30 anos — Grupo Exemplus — peça 1" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: design_selo1.png. Coloque o arquivo na pasta do site.</figcaption></figure>
+        <figure class="project-image"><img data-src="design_selo2.png" loading="lazy" alt="Selo 30 anos — Grupo Exemplus — peça 2" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: design_selo2.png. Coloque o arquivo na pasta do site.</figcaption></figure>
+        <figure class="project-image"><img data-src="design_selo3.png" loading="lazy" alt="Selo 30 anos — Grupo Exemplus — peça 3" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: design_selo3.png. Coloque o arquivo na pasta do site.</figcaption></figure>
+        <figure class="project-image"><img data-src="design_selo4.png" loading="lazy" alt="Selo 30 anos — Grupo Exemplus — peça 4" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: design_selo4.png. Coloque o arquivo na pasta do site.</figcaption></figure>
+        <figure class="project-image"><img data-src="design_selo5.png" loading="lazy" alt="Selo 30 anos — Grupo Exemplus — peça 5" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: design_selo5.png. Coloque o arquivo na pasta do site.</figcaption></figure>
+        <figure class="project-image"><img data-src="design_selo6.png" loading="lazy" alt="Selo 30 anos — Grupo Exemplus — peça 6" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: design_selo6.png. Coloque o arquivo na pasta do site.</figcaption></figure>
+        <figure class="project-image"><img data-src="design_selo7.png" loading="lazy" alt="Selo 30 anos — Grupo Exemplus — peça 7" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: design_selo7.png. Coloque o arquivo na pasta do site.</figcaption></figure>
       </div>
       <div class="modal-footer"><span>07 peças</span><span>Role para explorar o projeto ↓</span></div>
     </div>
@@ -469,11 +542,11 @@ footer {
         <p class="modal-desc">Uma coleção de estudos e soluções de marca reunidos na Logo Season.</p>
       </div>
       <div class="modal-gallery">
-        <figure class="project-image"><img src="logo_season_1.png" loading="lazy" alt="Coleção Logo Season — peça 1" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: logo_season_1.png. Coloque o arquivo na pasta do site.</figcaption></figure>
-        <figure class="project-image"><img src="logo_season_2.png" loading="lazy" alt="Coleção Logo Season — peça 2" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: logo_season_2.png. Coloque o arquivo na pasta do site.</figcaption></figure>
-        <figure class="project-image"><img src="logo_season_3.png" loading="lazy" alt="Coleção Logo Season — peça 3" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: logo_season_3.png. Coloque o arquivo na pasta do site.</figcaption></figure>
+        <figure class="project-image"><img data-src="logo_season_1.png" loading="lazy" alt="Coleção Logo Season — peça 1" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: logo_season_1.png. Coloque o arquivo na pasta do site.</figcaption></figure>
+        <figure class="project-image"><img data-src="logo_season_2.png" loading="lazy" alt="Coleção Logo Season — peça 2" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: logo_season_2.png. Coloque o arquivo na pasta do site.</figcaption></figure>
+        <figure class="project-image"><img data-src="logo_season_3.png" loading="lazy" alt="Coleção Logo Season — peça 3" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: logo_season_3.png. Coloque o arquivo na pasta do site.</figcaption></figure>
       </div>
-      <div class="modal-footer"><span>04 peças</span><span>Role para explorar o projeto ↓</span></div>
+      <div class="modal-footer"><span>03 peças</span><span>Role para explorar o projeto ↓</span></div>
     </div>
   </div>
 
@@ -486,7 +559,7 @@ footer {
         <p class="modal-desc">Apresentação do projeto de identidade visual Cotidiano.</p>
       </div>
       <div class="modal-gallery">
-        <figure class="project-image"><img src="Cotidiano.png" loading="lazy" alt="MIV Cotidiano — peça 1" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: Cotidiano.png. Coloque o arquivo na pasta do site.</figcaption></figure>
+        <figure class="project-image"><img data-src="Cotidiano.png" loading="lazy" alt="MIV Cotidiano — peça 1" decoding="async"><figcaption class="image-error" hidden>Imagem não encontrada: Cotidiano.png. Coloque o arquivo na pasta do site.</figcaption></figure>
       </div>
       <div class="modal-footer"><span>01 peça</span><span>Role para explorar o projeto ↓</span></div>
     </div>

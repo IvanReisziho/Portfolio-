@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.04, rootMargin: "0px 0px 100px 0px" });
     revealEls.forEach(el => io.observe(el));
   }
 
@@ -102,71 +102,75 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   document.querySelectorAll('.frame.carousel').forEach(initCarousel);
 
-  // ---------- Galerias de projeto em janelas flutuantes ----------
-  let previousFocus = null;
-  let activeModal = null;
-  let savedScroll = 0;
+  // ---------- Modal de projeto com conteúdo incorporado do Behance ----------
+  let lastFocusedElement = null;
 
   function openModal(modal) {
-    if (!modal || activeModal) return;
-    previousFocus = document.activeElement;
-    savedScroll = window.scrollY;
-    activeModal = modal;
-    modal.setAttribute('aria-hidden', 'false');
+    if (!modal) return;
+    lastFocusedElement = document.activeElement;
+    // Evita baixar dezenas de imagens dos projetos antes de o usuário abrir a galeria.
+    modal.querySelectorAll('img[data-src]').forEach(img => {
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
+    });
     modal.classList.add('is-open');
-    const inner = modal.querySelector('.project-modal-inner');
-    if (inner) inner.scrollTop = 0;
-    document.body.classList.add('project-modal-open');
-    modal.querySelector('.modal-close')?.focus({ preventScroll: true });
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const closeButton = modal.querySelector('.modal-close');
+    if (closeButton) closeButton.focus({ preventScroll: true });
   }
 
-  function closeModal() {
-    if (!activeModal) return;
-    const modal = activeModal;
-    activeModal = null;
+  function closeModal(modal) {
+    if (!modal) return;
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('project-modal-open');
-    window.scrollTo({ top: savedScroll, behavior: 'instant' });
-    if (previousFocus?.focus) previousFocus.focus({ preventScroll: true });
+    document.body.style.overflow = '';
+    // Interrompe o conteúdo incorporado ao fechar e evita áudio/vídeo em segundo plano.
+    const iframe = modal.querySelector('.behance-project-embed');
+    if (iframe) {
+      const currentSrc = iframe.getAttribute('src');
+      iframe.setAttribute('src', 'about:blank');
+      requestAnimationFrame(() => iframe.setAttribute('src', currentSrc));
+    }
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+      lastFocusedElement.focus({ preventScroll: true });
+    }
   }
 
+  document.querySelectorAll('.project-modal').forEach(modal => {
+    modal.setAttribute('aria-hidden', 'true');
+  });
+
   document.querySelectorAll('.work-item[data-modal]').forEach(item => {
-    const open = () => openModal(document.getElementById(item.dataset.modal));
-    item.addEventListener('click', open);
-    item.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        open();
+    const trigger = () => openModal(document.getElementById(item.getAttribute('data-modal')));
+    item.addEventListener('click', (e) => {
+      if (e.target.closest('.carousel-arrow, .carousel-dots, .behance-btn')) return;
+      trigger();
+    });
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        trigger();
       }
     });
   });
 
   document.querySelectorAll('.project-modal').forEach(modal => {
-    modal.querySelector('.modal-close')?.addEventListener('click', closeModal);
-    modal.addEventListener('click', event => {
-      if (event.target === modal) closeModal();
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal(modal);
     });
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) closeBtn.addEventListener('click', () => closeModal(modal));
   });
 
-  document.addEventListener('keydown', event => {
-    if (!activeModal) return;
-    if (event.key === 'Escape') { closeModal(); return; }
-    if (event.key !== 'Tab') return;
-    const elements = [...activeModal.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])')].filter(el => !el.disabled);
-    if (!elements.length) return;
-    const first = elements[0], last = elements[elements.length-1];
-    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.project-modal.is-open').forEach(closeModal);
+    }
   });
 
-  document.querySelectorAll('.project-image img').forEach(img => {
-    img.addEventListener('error', () => {
-      img.hidden = true;
-      const error = img.parentElement.querySelector('.image-error');
-      if (error) error.hidden = false;
-    });
-  });
+  // (Bloco antigo que cancelava o wheel e chamava scrollBy foi REMOVIDO.
+  //  O scroll agora é tratado só pelo script inline no index.html.)
 
   // ---------- Menu suspenso (mobile) ----------
   const navToggle = document.getElementById('navToggle');
