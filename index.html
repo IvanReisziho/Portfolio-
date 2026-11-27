@@ -96,12 +96,31 @@ footer {
 
 <style id="hero-model-2">
 /* ================= HERO — MODELO 2 ================= */
+/* Texto e botão sobem: em vez de colados na base, ficam no meio/alto do hero */
+#hero.hero-model-2 {
+  align-items: center;
+  padding: 80px 0 140px;
+}
+
 .hero-model-2 .hero-content {
-  transform: translateX(-2vw);
+  transform: none;
 }
 
 .hero-model-2 .hero-grid {
   align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Crachá 3D ocupa só a metade direita da tela; texto fica à esquerda */
+.hero-model-2 .hero-media spline-viewer {
+  /* --spline-x: negativo = crachá vai para a esquerda; positivo = vai para a direita */
+  --spline-x: -37%;
+  left: calc(50% + var(--spline-x));
+  width: 50%;
+}
+
+.hero-model-2 .hero-side-compact {
+  display: none;
 }
 
 .hero-copy-compact {
@@ -173,11 +192,18 @@ footer {
 
 @media (max-width: 900px) {
   .hero-model-2 .hero-content {
-    transform: translateX(0);
+    transform: none;
   }
 
   .hero-model-2 .hero-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* No celular o crachá volta a ocupar a tela toda, atrás do texto */
+  .hero-model-2 .hero-media spline-viewer {
+    --spline-x: -50%;
+    left: calc(50% + var(--spline-x));
+    width: 100%;
   }
 
   .hero-copy-compact {
@@ -314,7 +340,7 @@ footer {
   <section id="work">
     <div class="wrap">
       <div class="section-head" data-reveal>
-        <h2>Projetos selecionados</h2>
+        <h2>Principais projetos</h2>
         <p>Uma seleção de trabalhos em identidade visual, direção de arte, comunicação e motion design.</p>
       </div>
 
@@ -322,7 +348,6 @@ footer {
 
         <div class="work-item" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-exemplus">
           <div class="frame carousel" data-carousel>
-            <!-- TROQUE pelas imagens reais do selo/aplicações (adicione ou remova <img> à vontade) -->
             <img class="is-active" src="GRUPO_EXEMPLUS_1.png" alt="Selo comemorativo dos 30 anos do Grupo Exemplus — imagem 1">
             <img src="GRUPO_EXEMPLUS_2.png" alt="Selo comemorativo dos 30 anos do Grupo Exemplus — imagem 2">
             <img src="GRUPO_EXEMPLUS_3.png" alt="Selo comemorativo dos 30 anos do Grupo Exemplus — imagem 3">
@@ -345,7 +370,6 @@ footer {
 
         <div class="work-item" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-cnmp">
           <div class="frame carousel" data-carousel>
-            <!-- TROQUE pelas imagens reais da identidade -->
             <img class="is-active" src="OUVIDORIA_CNMP_1.png" alt="Identidade visual da Ouvidoria do CNMP — imagem 1">
             <img src="OUVIDORIA_CNMP_2.png" alt="Identidade visual da Ouvidoria do CNMP — imagem 2">
             <img src="OUVIDORIA_CNMP_3.png" alt="Identidade visual da Ouvidoria do CNMP — imagem 3">
@@ -364,75 +388,6 @@ footer {
           </div>
           <p class="work-desc">Desenvolvimento de identidade visual para comunicação institucional no Ministério Público, buscando unidade visual, reconhecimento e clareza em diferentes canais e formatos.</p>
           <a class="behance-btn" href="https://www.behance.net/gallery/242273025/Selo-Ouvidoria" target="_blank" rel="noopener">Ver no Behance ↗</a>
-        </div>
-
-        <div class="work-item" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-transporte">
-          <div class="frame carousel" data-carousel>
-            <!-- TROQUE pelas imagens/stills reais do motion -->
-            <img class="is-active" src="SISTEMA_TRANSPORTE_1.png" alt="Edições e motion do sistema de transporte — imagem 1">
-            <img src="SISTEMA_TRANSPORTE_2.png" alt="Edições e motion do sistema de transporte — imagem 2">
-            <img src="SISTEMA_TRANSPORTE_3.png" alt="Edições e motion do sistema de transporte — imagem 3">
-            <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
-            <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
-            <div class="carousel-dots"></div>
-          </div>
-          <div class="work-meta">
-            <h3>Sistema de Transporte — edições e motion</h3>
-            <span><!-- ANO --></span>
-          </div>
-          <div class="work-tags">
-            <span>Motion Design</span>
-            <span>Edição de Vídeo</span>
-          </div>
-          <p class="work-desc"><!-- TROQUE por uma descrição real --> Edição e criação de peças de motion design para comunicação do sistema de transporte, combinando ritmo, informação e consistência visual.</p>
-          <!-- TROQUE o href pelo link real do case no Behance -->
-          <a class="behance-btn" href="#" target="_blank" rel="noopener">Ver no Behance ↗</a>
-        </div>
-
-        <div class="work-item" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-bsbdw">
-          <div class="frame carousel" data-carousel>
-            <!-- TROQUE pelas artes reais da Brasília Design Week -->
-            <img class="is-active" src="BRASILIA_DESIGNWEEK_1.png" alt="Artes da Brasília Design Week — imagem 1">
-            <img src="BRASILIA_DESIGNWEEK_2.png" alt="Artes da Brasília Design Week — imagem 2">
-            <img src="BRASILIA_DESIGNWEEK_3.png" alt="Artes da Brasília Design Week — imagem 3">
-            <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
-            <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
-            <div class="carousel-dots"></div>
-          </div>
-          <div class="work-meta">
-            <h3>Brasília Design Week — artes</h3>
-            <span><!-- ANO --></span>
-          </div>
-          <div class="work-tags">
-            <span>Direção de Arte</span>
-            <span>Identidade Visual</span>
-          </div>
-          <p class="work-desc"><!-- TROQUE por uma descrição real --> Criação de peças para a Brasília Design Week, explorando linguagem visual, composição e aplicações para diferentes formatos do evento.</p>
-          <!-- TROQUE o href pelo link real do case no Behance -->
-          <a class="behance-btn" href="#" target="_blank" rel="noopener">Ver no Behance ↗</a>
-        </div>
-
-        <div class="work-item" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-cinema">
-          <div class="frame carousel" data-carousel>
-            <!-- TROQUE pelos stills reais do motion do festival -->
-            <img class="is-active" src="FESTIVAL_CINEMA_1.png" alt="Motions do festival de cinema — imagem 1">
-            <img src="FESTIVAL_CINEMA_2.png" alt="Motions do festival de cinema — imagem 2">
-            <img src="FESTIVAL_CINEMA_3.png" alt="Motions do festival de cinema — imagem 3">
-            <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
-            <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
-            <div class="carousel-dots"></div>
-          </div>
-          <div class="work-meta">
-            <h3>Festival de Cinema — motions</h3>
-            <span><!-- ANO --></span>
-          </div>
-          <div class="work-tags">
-            <span>Motion Design</span>
-            <span>Vinhetas</span>
-          </div>
-          <p class="work-desc"><!-- TROQUE por uma descrição real --> Criação de vinhetas e peças de motion para a comunicação audiovisual do festival, trabalhando movimento, ritmo e identidade.</p>
-          <!-- TROQUE o href pelo link real do case no Behance -->
-          <a class="behance-btn" href="#" target="_blank" rel="noopener">Ver no Behance ↗</a>
         </div>
 
         <div class="work-item" data-reveal tabindex="0" role="button" aria-haspopup="dialog" data-modal="modal-veertien">
@@ -521,78 +476,6 @@ footer {
         </div>
         <p class="modal-desc">Desenvolvimento de identidade visual como parte do trabalho de comunicação institucional no Ministério Público, contribuindo para o fortalecimento da comunicação institucional por meio do design e garantindo unidade estética e clareza informativa em diferentes canais e formatos.</p>
         <a class="behance-btn" href="https://www.behance.net/gallery/242273025/Selo-Ouvidoria" target="_blank" rel="noopener">Ver trabalho completo no Behance ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="project-modal" id="modal-transporte" role="dialog" aria-modal="true" aria-labelledby="modal-transporte-title">
-    <div class="project-modal-inner">
-      <button class="modal-close" aria-label="Fechar">×</button>
-      <div class="frame carousel modal-carousel" data-carousel>
-        <img class="is-active" src="SISTEMA_TRANSPORTE_1.png" alt="Edições e motion do sistema de transporte — imagem 1">
-        <img src="SISTEMA_TRANSPORTE_2.png" alt="Edições e motion do sistema de transporte — imagem 2">
-        <img src="SISTEMA_TRANSPORTE_3.png" alt="Edições e motion do sistema de transporte — imagem 3">
-        <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
-        <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
-        <div class="carousel-dots"></div>
-      </div>
-      <div class="modal-body">
-        <h3 id="modal-transporte-title">Sistema de Transporte — edições e motion</h3>
-        <p class="modal-year"><!-- ANO --></p>
-        <div class="work-tags">
-          <span>Motion Design</span>
-          <span>Edição de Vídeo</span>
-        </div>
-        <p class="modal-desc"><!-- TROQUE por uma descrição real, incluindo o nome do sistema/cidade --> Edição e peças de motion design para a comunicação visual do sistema de transporte, com foco em clareza informativa e consistência de identidade nos diferentes pontos de contato com o usuário.</p>
-        <a class="behance-btn" href="#" target="_blank" rel="noopener">Ver trabalho completo no Behance ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="project-modal" id="modal-bsbdw" role="dialog" aria-modal="true" aria-labelledby="modal-bsbdw-title">
-    <div class="project-modal-inner">
-      <button class="modal-close" aria-label="Fechar">×</button>
-      <div class="frame carousel modal-carousel" data-carousel>
-        <img class="is-active" src="BRASILIA_DESIGNWEEK_1.png" alt="Artes da Brasília Design Week — imagem 1">
-        <img src="BRASILIA_DESIGNWEEK_2.png" alt="Artes da Brasília Design Week — imagem 2">
-        <img src="BRASILIA_DESIGNWEEK_3.png" alt="Artes da Brasília Design Week — imagem 3">
-        <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
-        <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
-        <div class="carousel-dots"></div>
-      </div>
-      <div class="modal-body">
-        <h3 id="modal-bsbdw-title">Brasília Design Week — artes</h3>
-        <p class="modal-year"><!-- ANO --></p>
-        <div class="work-tags">
-          <span>Direção de Arte</span>
-          <span>Identidade Visual</span>
-        </div>
-        <p class="modal-desc"><!-- TROQUE por uma descrição real --> Criação de artes para a Brasília Design Week, aplicadas em peças digitais e impressas ao longo do evento, reforçando a identidade visual da edição.</p>
-        <a class="behance-btn" href="#" target="_blank" rel="noopener">Ver trabalho completo no Behance ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="project-modal" id="modal-cinema" role="dialog" aria-modal="true" aria-labelledby="modal-cinema-title">
-    <div class="project-modal-inner">
-      <button class="modal-close" aria-label="Fechar">×</button>
-      <div class="frame carousel modal-carousel" data-carousel>
-        <img class="is-active" src="FESTIVAL_CINEMA_1.png" alt="Motions do festival de cinema — imagem 1">
-        <img src="FESTIVAL_CINEMA_2.png" alt="Motions do festival de cinema — imagem 2">
-        <img src="FESTIVAL_CINEMA_3.png" alt="Motions do festival de cinema — imagem 3">
-        <button class="carousel-arrow prev" data-dir="-1" aria-label="Imagem anterior">‹</button>
-        <button class="carousel-arrow next" data-dir="1" aria-label="Próxima imagem">›</button>
-        <div class="carousel-dots"></div>
-      </div>
-      <div class="modal-body">
-        <h3 id="modal-cinema-title">Festival de Cinema — motions</h3>
-        <p class="modal-year"><!-- ANO --></p>
-        <div class="work-tags">
-          <span>Motion Design</span>
-          <span>Vinhetas</span>
-        </div>
-        <p class="modal-desc"><!-- TROQUE por uma descrição real, incluindo o nome do festival --> Criação de vinhetas e peças de motion para a identidade audiovisual do festival de cinema.</p>
-        <a class="behance-btn" href="#" target="_blank" rel="noopener">Ver trabalho completo no Behance ↗</a>
       </div>
     </div>
   </div>
