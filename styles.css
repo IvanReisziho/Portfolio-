@@ -943,3 +943,123 @@ footer{
   .hero-media iframe,
   .hero-media spline-viewer{ pointer-events: none; }
 }
+/* ===== Projetos selecionados: cards clicáveis e galeria flutuante ===== */
+.work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.work-item { cursor: pointer; padding-bottom: 20px; transition: border-color .25s ease, transform .25s ease; }
+.work-item:hover { border-color: var(--accent-2); transform: translateY(-3px); }
+.work-item:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 4px; }
+.work-item .frame { aspect-ratio: 16 / 10; }
+.work-item .frame img { object-fit: cover; }
+.work-desc { padding-bottom: 6px; }
+body.project-modal-open { overflow: hidden; }
+.project-modal {
+  display: flex; position: fixed; inset: 0; z-index: 9999;
+  align-items: center; justify-content: center;
+  padding: clamp(12px, 3vw, 36px); background: rgba(0, 0, 0, .86);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .25s ease, visibility .25s ease;
+}
+.project-modal.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+.project-modal-inner {
+  width: min(1040px, 100%); max-width: 1040px; max-height: min(90dvh, 1100px);
+  overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable;
+  background: #0a0a10; border: 1px solid #303044; border-radius: 14px;
+  box-shadow: 0 35px 110px rgba(0,0,0,.7);
+  transform: translateY(14px); transition: transform .25s ease;
+}
+.project-modal.is-open .project-modal-inner { transform: translateY(0); }
+.project-modal .modal-close {
+  position: sticky; float: right; top: 14px; right: 14px;
+  margin: 14px 14px -54px 0; z-index: 20;
+  width: 42px; height: 42px; background: rgba(0,0,0,.87);
+  border: 1px solid rgba(255,255,255,.4); font-size: 28px;
+}
+.project-modal .modal-body { padding: 54px clamp(24px, 5vw, 64px) 42px; }
+.project-eyebrow { color: var(--accent-2); font-size: .72rem; letter-spacing: .13em; text-transform: uppercase; margin: 0 0 12px; }
+.project-modal .modal-body h3 { font-size: clamp(1.9rem, 3.8vw, 3rem); line-height: 1.1; margin: 0 0 20px; }
+.project-modal .modal-desc { max-width: 65ch; }
+.project-modal .modal-gallery { display: flex; flex-direction: column; gap: 0; background: #111; }
+.project-image { margin: 0; width: 100%; }
+.project-image img { display: block; width: 100%; height: auto; object-fit: contain; }
+.image-error { display: block; padding: 42px; text-align: center; color: #a9a4ae; font-size: .9rem; background: #17171f; }
+.image-error[hidden] { display: none; }
+.modal-footer { display: flex; justify-content: space-between; gap: 15px; padding: 20px 32px; color: var(--text-muted); font-size: .77rem; }
+@media (max-width: 860px) { .work-grid { grid-template-columns: 1fr; } }
+@media (max-width: 700px) {
+  .project-modal { padding: 0; align-items: stretch; }
+  .project-modal-inner { max-height: 100dvh; min-height: 100dvh; border: 0; border-radius: 0; }
+  .project-modal .modal-body { padding-top: 78px; }
+  .project-modal .modal-close { top: 12px; }
+  .modal-footer { padding: 18px 20px; }
+}
+@media (prefers-reduced-motion: reduce) { .project-modal, .project-modal-inner, .work-item { transition: none; } }
+.project-image img[hidden] { display: none; }
+
+
+/* ---------- Ajuste fino das thumbs dos projetos ---------- */
+.work-item .frame {
+  position: relative;
+  background: #090910;
+}
+
+.work-item--ouvidoria .frame img {
+  object-position: center top;
+}
+
+.work-item--selo30 .frame img {
+  object-position: center 20%;
+}
+
+.work-item--logoseason .frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  background: linear-gradient(180deg, #0d0d14 0%, #09090f 100%);
+}
+
+.work-item--logoseason .frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+}
+
+.work-item--miv .frame img {
+  object-position: center center;
+}
+
+@media (max-width: 860px) {
+  .work-item--logoseason .frame {
+    padding: 10px;
+  }
+}
+
+
+/* ---------- Capas finais orientadas pelo cliente ---------- */
+.work-item--ouvidoria .frame,
+.work-item--selo30 .frame,
+.work-item--logoseason .frame,
+.work-item--miv .frame {
+  display: block;
+  padding: 0;
+  background: var(--surface);
+}
+
+.work-item--ouvidoria .frame img,
+.work-item--selo30 .frame img,
+.work-item--logoseason .frame img,
+.work-item--miv .frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  background: transparent;
+}
+
+.work-item--selo30 .frame img { object-position: center 28%; }
+.work-item--ouvidoria .frame img { object-position: center center; }
+.work-item--miv .frame img { object-position: center center; }
+.work-item--logoseason .frame img { object-position: center center; }

@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let current = 0;
 
   if (prefersReduced) {
-    heroDesc.classList.add('is-in');
+    if (heroDesc) heroDesc.classList.add('is-in');
   } else {
-    setTimeout(() => heroDesc.classList.add('is-in'), 400);
+    setTimeout(() => { if (heroDesc) heroDesc.classList.add('is-in'); }, 400);
 
     if (statements.length > 1) {
       setInterval(() => {
@@ -102,46 +102,71 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   document.querySelectorAll('.frame.carousel').forEach(initCarousel);
 
-  // ---------- Modal de projeto ----------
+  // ---------- Galerias de projeto em janelas flutuantes ----------
+  let previousFocus = null;
+  let activeModal = null;
+  let savedScroll = 0;
+
   function openModal(modal) {
+    if (!modal || activeModal) return;
+    previousFocus = document.activeElement;
+    savedScroll = window.scrollY;
+    activeModal = modal;
+    modal.setAttribute('aria-hidden', 'false');
     modal.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
+    const inner = modal.querySelector('.project-modal-inner');
+    if (inner) inner.scrollTop = 0;
+    document.body.classList.add('project-modal-open');
+    modal.querySelector('.modal-close')?.focus({ preventScroll: true });
   }
-  function closeModal(modal) {
+
+  function closeModal() {
+    if (!activeModal) return;
+    const modal = activeModal;
+    activeModal = null;
     modal.classList.remove('is-open');
-    document.body.style.overflow = '';
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('project-modal-open');
+    window.scrollTo({ top: savedScroll, behavior: 'instant' });
+    if (previousFocus?.focus) previousFocus.focus({ preventScroll: true });
   }
 
   document.querySelectorAll('.work-item[data-modal]').forEach(item => {
-    const trigger = () => {
-      const modal = document.getElementById(item.getAttribute('data-modal'));
-      if (modal) openModal(modal);
-    };
-    item.addEventListener('click', (e) => {
-      if (e.target.closest('.carousel-arrow') || e.target.closest('.carousel-dots') || e.target.closest('.behance-btn')) return;
-      trigger();
-    });
-    item.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); trigger(); }
+    const open = () => openModal(document.getElementById(item.dataset.modal));
+    item.addEventListener('click', open);
+    item.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        open();
+      }
     });
   });
 
   document.querySelectorAll('.project-modal').forEach(modal => {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal(modal);
+    modal.querySelector('.modal-close')?.addEventListener('click', closeModal);
+    modal.addEventListener('click', event => {
+      if (event.target === modal) closeModal();
     });
-    const closeBtn = modal.querySelector('.modal-close');
-    if (closeBtn) closeBtn.addEventListener('click', () => closeModal(modal));
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.project-modal.is-open').forEach(closeModal);
-    }
+  document.addEventListener('keydown', event => {
+    if (!activeModal) return;
+    if (event.key === 'Escape') { closeModal(); return; }
+    if (event.key !== 'Tab') return;
+    const elements = [...activeModal.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])')].filter(el => !el.disabled);
+    if (!elements.length) return;
+    const first = elements[0], last = elements[elements.length-1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   });
 
-  // (Bloco antigo que cancelava o wheel e chamava scrollBy foi REMOVIDO.
-  //  O scroll agora é tratado só pelo script inline no index.html.)
+  document.querySelectorAll('.project-image img').forEach(img => {
+    img.addEventListener('error', () => {
+      img.hidden = true;
+      const error = img.parentElement.querySelector('.image-error');
+      if (error) error.hidden = false;
+    });
+  });
 
   // ---------- Menu suspenso (mobile) ----------
   const navToggle = document.getElementById('navToggle');
