@@ -193,3 +193,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Em dispositivos de toque, um toque sobre o vídeo ativa/desativa seu áudio.
+document.addEventListener('DOMContentLoaded', () => {
+  if (!window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+  document.querySelectorAll('#videos .video-card video, #videos-single .single-card video, #videos-feed .feed-card video, #videos-horizontal .video-card video').forEach(video => {
+    video.setAttribute('aria-label', 'Toque para ativar ou desativar o som');
+    video.addEventListener('click', () => {
+      const turnOn = video.muted;
+      document.querySelectorAll('main video').forEach(other => { if (other !== video) other.muted = true; });
+      video.muted = !turnOn;
+      if (video.paused) video.play().catch(() => {});
+    });
+  });
+});
